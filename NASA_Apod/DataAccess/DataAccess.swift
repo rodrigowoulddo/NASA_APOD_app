@@ -10,7 +10,7 @@ import Foundation
 
 class ApodDataAccess {
     
-    static func getAPods(){
+    static func getAPods(onResponse: @escaping ([Apod]) -> Void){
         
         print("Geting apods from NASA API")
         
@@ -25,7 +25,6 @@ class ApodDataAccess {
             
             let statusCode = (response as! HTTPURLResponse).statusCode
             if statusCode == 200{
-                print("Response from server:")
                 
                 if let returnData = String(data: data!, encoding: .utf8) {
 
@@ -35,8 +34,7 @@ class ApodDataAccess {
                         let nsArray = try JSONSerialization.jsonObject(with: conversionData, options: []) as! NSArray
                         
                         //deal with response
-                        self.dealWithResponse(nsArray: nsArray)
-                        
+                        onResponse(self.responseToApodArray(nsArray: nsArray))
 
                     } catch let error as NSError {
                         print("Failed to load: \(error.localizedDescription)")
@@ -54,14 +52,12 @@ class ApodDataAccess {
         
     }
     
-    private static func dealWithResponse(nsArray: NSArray){
+    private static func responseToApodArray(nsArray: NSArray) -> [Apod]{
         
         let dictionaryArray = NSArrayToDictionaryArray(nsArray: nsArray)
         let apodArray = dictionaryArrayToApodArray(dictionaryArray: dictionaryArray)
         
-        for apod in apodArray {
-            print("("+apod.date+")"+apod.title)
-        }
+        return apodArray
     }
     
     static func NSArrayToDictionaryArray(nsArray: NSArray) -> [Dictionary<String, Any>] {
@@ -84,6 +80,11 @@ class ApodDataAccess {
         for dict in dictionaryArray{
             apods.append(Apod(dictionary: dict))
         }
+        
+        // Print server response:
+        print("Response from server:")
+        for apod in apods { print("("+apod.date+") "+apod.title) }
+        
         return apods
     }
     
