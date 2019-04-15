@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DetailController.swift
 //  NASA_Apod
 //
 //  Created by Rodrigo Giglio on 14/04/19.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ApodListController: UIViewController {
-
+class ApodDetailController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    
 }
-
