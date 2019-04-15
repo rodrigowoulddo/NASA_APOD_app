@@ -15,7 +15,10 @@ class ApodListController: UIViewController {
     var apods: [Apod] = []
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        apodsTableView.delegate = self
         apodsTableView.dataSource = self
         apodsTableView.rowHeight = 125.0
         apodsTableView.separatorStyle = .none
@@ -34,9 +37,21 @@ class ApodListController: UIViewController {
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToDetailsSegue",
+        let detailController = segue.destination as? ApodDetailController,
+        let selectedAPOD = sender as? Apod {
+            
+            detailController.apod = selectedAPOD
+            
+        }
+        
+    }
 }
 
-extension ApodListController: UITableViewDataSource{
+extension ApodListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apods.count
@@ -61,13 +76,13 @@ extension ApodListController: UITableViewDataSource{
         cell.pictureImageView.image = UIImage(named: "no_image")
 
         if apods[indexPath.row].media_type == "image"{
-            if let url = URL( string: apods[indexPath.row].url)
+            if let url = URL(string: apods[indexPath.row].url)
             {
                 DispatchQueue.global().async {
-                    if let data = try? Data( contentsOf:url)
+                    if let data = try? Data(contentsOf:url)
                     {
                         DispatchQueue.main.async {
-                            cell.pictureImageView.image = UIImage( data:data)
+                            cell.pictureImageView.image = UIImage(data:data)
                         }
                     }
                 }
@@ -76,5 +91,17 @@ extension ApodListController: UITableViewDataSource{
         
         return cell
     }
-}
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        print(#function, self)
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        print("will perform segue")
+        performSegue(withIdentifier: "goToDetailsSegue", sender: apods[indexPath.row])
+
+    }
+}

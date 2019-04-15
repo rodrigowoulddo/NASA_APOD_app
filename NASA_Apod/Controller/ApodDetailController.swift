@@ -10,9 +10,35 @@ import UIKit
 
 class ApodDetailController: UIViewController {
     
+    var apod: Apod!
+    
+    @IBOutlet weak var pictureImageView: UIImageView!
+    @IBOutlet weak var bgPictureImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var explanationLabel: UILabel!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        if apod.media_type == "image" {
+            if let url = URL(string: apod.url) {
+                DispatchQueue.global().async {
+                    if let data = try? Data(contentsOf:url) {
+                        DispatchQueue.main.async { self.pictureImageView.image = UIImage(data:data)
+                            self.bgPictureImageView.image = UIImage(data:data)
+                        }
+                        
+                    }
+                }
+            }
+        }
+        
+        dateLabel.text = apod.date
+        titleLabel.text = apod.title
+        explanationLabel.text = apod.explanation
+        
     }
     
     
