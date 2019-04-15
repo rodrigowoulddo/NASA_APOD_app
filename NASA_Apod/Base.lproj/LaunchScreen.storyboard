@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen" translatesAutoresizingMaskIntoConstraints="NO" id="rAm-mX-Yme">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nasa_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Itp-wF-nfk">
+                                <rect key="frame" x="0.0" y="144" width="414" height="236"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="236" id="RMk-vU-zK7"/>
+                                    <constraint firstAttribute="width" constant="414" id="eUq-iP-aRf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Astronomy Picture of the Day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyD-fF-IPC">
+                                <rect key="frame" x="0.0" y="393" width="414" height="110"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="1MP-0X-6tT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Itp-wF-nfk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1zZ-eA-eh1"/>
+                            <constraint firstItem="RyD-fF-IPC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6ZS-G7-Qqv"/>
+                            <constraint firstItem="Itp-wF-nfk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Efu-gL-viC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Itp-wF-nfk" secondAttribute="trailing" id="Heu-oo-aeZ"/>
+                            <constraint firstItem="Itp-wF-nfk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="KlH-Ij-e5F"/>
+                            <constraint firstItem="RyD-fF-IPC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Sxs-sG-2zi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Itp-wF-nfk" secondAttribute="trailing" id="c5t-IU-HAf"/>
+                            <constraint firstItem="RyD-fF-IPC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jx6-cR-hM8"/>
+                            <constraint firstItem="RyD-fF-IPC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lB0-zB-frk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="nasa_logo" width="3400" height="1700"/>
+        <image name="splashscreen" width="1648" height="1904.5"/>
+    </resources>
+</document>
