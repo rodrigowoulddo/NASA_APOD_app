@@ -11,19 +11,35 @@ import UIKit
 class ApodListController: UIViewController {
     
     @IBOutlet weak var apodsTableView: UITableView!
+
+    @IBOutlet weak var dateButton: UIBarButtonItem!
+    @IBOutlet weak var datePickerView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var apods: [Apod] = []
-
+    
+    let DEFAULT_DATE: String = "2019-04-01"
+    
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         apodsTableView.dataSource = self
         apodsTableView.rowHeight = 125.0
         apodsTableView.separatorStyle = .none
         
-        ApodDataAccess.getAPods(onResponse: {
-            (apods) in self.onResponseFromAPI(apods: apods)
-        })
+        //Activity indicator
         
+        // Add it to the view where you want it to appear
+        view.addSubview(activityIndicator)
+        // Set up its size (the super view bounds usually)
+        activityIndicator.frame = view.bounds
+
+        loadApods(date: DEFAULT_DATE)
+        
+        datePicker.datePickerMode = .date
+        datePickerView.isHidden = true
+        datePicker.maximumDate = Date() //today
     }
     
     private func onResponseFromAPI(apods: [Apod]){
@@ -33,7 +49,65 @@ class ApodListController: UIViewController {
             self.apodsTableView.reloadData()
         }
         
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        }
+        
+        
     }
+    
+    @IBAction func dateButtonClick(_ sender: Any) {
+        
+        if datePickerView.isHidden{
+            toggleDatePicker()
+            dateButton.image = UIImage(named: "ok_icon")
+            return
+        }
+        
+        print("Change Date")
+        
+        let date : String = getDateFromDatePicker()
+        
+       loadApods(date: date)
+        
+        dateButton.image = UIImage(named: "date_icon")
+        toggleDatePicker()
+        
+    }
+    
+    private func loadApods(date: String){
+        
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
+        
+        self.clearApods()
+        ApodDataAccess.getAPods(date: date, onResponse: {
+            (apods) in self.onResponseFromAPI(apods: apods)
+        })
+        
+    }
+    
+    private func toggleDatePicker(){
+        datePickerView.isHidden = !datePickerView.isHidden
+    }
+    
+    private func getDateFromDatePicker() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        print(dateFormatter.string(from: self.datePicker.date))
+        return dateFormatter.string(from: self.datePicker.date)
+        
+    }
+    
+    private func clearApods(){
+        self.apods = []
+        
+        DispatchQueue.main.async {
+            self.apodsTableView.reloadData()
+        }
+    }
+    
 }
 
 extension ApodListController: UITableViewDataSource{
@@ -58,23 +132,35 @@ extension ApodListController: UITableViewDataSource{
 
         
         // Set image url
-        cell.pictureImageView.image = UIImage(named: "no_image")
-
-        if apods[indexPath.row].media_type == "image"{
-            if let url = URL( string: apods[indexPath.row].url)
-            {
-                DispatchQueue.global().async {
-                    if let data = try? Data( contentsOf:url)
-                    {
-                        DispatchQueue.main.async {
-                            cell.pictureImageView.image = UIImage( data:data)
+        
+        if apods[indexPath.row].imageData == nil {
+            if apods[indexPath.row].media_type == "image"{
+                if let url = URL( string: apods[indexPath.row].url)
+                {
+                    cell.dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, _) in
+                        if let data = data {
+                            self.apods[indexPath.row].imageData = data
+                            DispatchQueue.main.async {
+                                cell.pictureImageView.image = UIImage(data: data)
+                            }
                         }
-                    }
+                    })
+                    
+                    cell.dataTask?.resume()
                 }
             }
+        } else{
+            DispatchQueue.main.async {
+                cell.pictureImageView.image = UIImage(data: self.apods[indexPath.row].imageData!)
+            }
         }
+
+
         
         return cell
     }
+    
+    
+    
 }
 

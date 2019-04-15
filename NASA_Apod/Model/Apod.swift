@@ -18,6 +18,7 @@ class Apod {
     let service_version: String
     let title: String
     let url: String
+    var imageData: Data?
     
     init(dictionary: [String:Any]) {
         self.copyright = dictionary["copyright"] as? String ?? nil
@@ -28,6 +29,7 @@ class Apod {
         self.service_version = dictionary["service_version"] as! String
         self.title = dictionary["title"] as! String
         self.url = dictionary["url"] as! String
+        self.imageData = nil
     }
 
     

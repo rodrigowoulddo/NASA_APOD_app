@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-fS-d5v">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-fS-d5v">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="apod" rowHeight="125" id="ECH-b1-NLk" customClass="ApodTableViewCell" customModule="NASA_Apod" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="apod" rowHeight="125" id="ECH-b1-NLk" customClass="ApodTableViewCell" customModule="NASA_Apod" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ECH-b1-NLk" id="wEx-jj-Ix0" customClass="ApodTableViewCell" customModule="NASA_Apod" customModuleProvider="target">
@@ -90,19 +90,62 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzU-jn-G4T">
+                                <rect key="frame" x="0.0" y="622" width="414" height="240"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Lgj-aO-0cd">
+                                        <rect key="frame" x="0.0" y="25" width="414" height="215"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="215" id="lfU-Na-Ow3"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="577051482.52661002">
+                                            <!--2019-04-15 20:04:42 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get APOD's since" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpY-uA-CHi">
+                                        <rect key="frame" x="16" y="10" width="382" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="XpY-uA-CHi" firstAttribute="top" secondItem="gzU-jn-G4T" secondAttribute="top" constant="10" id="3P7-WF-miF"/>
+                                    <constraint firstAttribute="trailing" secondItem="XpY-uA-CHi" secondAttribute="trailing" constant="16" id="7C9-Vt-0HQ"/>
+                                    <constraint firstAttribute="height" constant="240" id="EUS-Sc-1se"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lgj-aO-0cd" secondAttribute="bottom" id="NPQ-WK-Hac"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lgj-aO-0cd" secondAttribute="trailing" id="TzM-bA-ayl"/>
+                                    <constraint firstItem="Lgj-aO-0cd" firstAttribute="top" secondItem="XpY-uA-CHi" secondAttribute="bottom" id="bbm-WV-3M6"/>
+                                    <constraint firstItem="XpY-uA-CHi" firstAttribute="leading" secondItem="gzU-jn-G4T" secondAttribute="leading" constant="16" id="crw-Nw-n4f"/>
+                                    <constraint firstItem="Lgj-aO-0cd" firstAttribute="leading" secondItem="gzU-jn-G4T" secondAttribute="leading" id="qRt-8U-B9X"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gzU-jn-G4T" secondAttribute="trailing" id="9n8-NC-fU3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gzU-jn-G4T" secondAttribute="bottom" id="K7Y-u6-ZFN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RHN-fS-d5v" secondAttribute="bottom" id="XXx-lF-l6m"/>
                             <constraint firstItem="RHN-fS-d5v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a5o-KW-pw6"/>
+                            <constraint firstItem="gzU-jn-G4T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uQE-UU-rYW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RHN-fS-d5v" secondAttribute="trailing" id="vER-K9-3z5"/>
                             <constraint firstItem="RHN-fS-d5v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vgb-xC-enP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Astronomy Pictures of The Day" id="Ko4-dl-YKh"/>
+                    <navigationItem key="navigationItem" title="Astronomy Pictures of The Day" id="Ko4-dl-YKh">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="date_icon" id="Sha-5B-IiT">
+                            <connections>
+                                <action selector="dateButtonClick:" destination="BYZ-38-t0r" id="1ij-2O-MDB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="apodsTableView" destination="RHN-fS-d5v" id="gdv-IS-XCD"/>
+                        <outlet property="dateButton" destination="Sha-5B-IiT" id="wn9-LE-zbK"/>
+                        <outlet property="datePicker" destination="Lgj-aO-0cd" id="pgv-UY-Ak4"/>
+                        <outlet property="datePickerView" destination="gzU-jn-G4T" id="KAl-K9-uif"/>
                         <segue destination="uSV-r2-jOS" kind="show" identifier="goToDetailsSegue" id="Wbb-jf-qZ3"/>
                     </connections>
                 </viewController>
@@ -145,6 +188,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="date_icon" width="32" height="32"/>
         <image name="no_image" width="128" height="128"/>
     </resources>
 </document>

@@ -15,9 +15,16 @@ public class ApodTableViewCell: UITableViewCell {
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var dataTask: URLSessionDataTask?
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    public override func prepareForReuse() {
+        dataTask?.cancel()
+        pictureImageView.image = UIImage(named: "no_image")
     }
     
 }

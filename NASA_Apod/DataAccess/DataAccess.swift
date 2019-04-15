@@ -10,11 +10,11 @@ import Foundation
 
 class ApodDataAccess {
     
-    static func getAPods(onResponse: @escaping ([Apod]) -> Void){
+    static func getAPods(date: String, onResponse: @escaping ([Apod]) -> Void){
         
         print("Geting apods from NASA API")
         
-        let urlTest = URL(string: "https://api.nasa.gov/planetary/apod?api_key=WzRXZduHokkes2pjYAmiuBtrpsdLF8WKOhc1JWYS&start_date=2019-04-01")
+        let urlTest = URL(string: "https://api.nasa.gov/planetary/apod?api_key=WzRXZduHokkes2pjYAmiuBtrpsdLF8WKOhc1JWYS&start_date="+date)
         
         var request = URLRequest(url: urlTest!)
         
