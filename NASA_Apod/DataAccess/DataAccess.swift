@@ -54,7 +54,9 @@ class ApodDataAccess {
     
     private static func responseToApodArray(nsArray: NSArray) -> [Apod]{
         
-        let dictionaryArray = NSArrayToDictionaryArray(nsArray: nsArray)
+        let ordereNnsArray = nsArray.reversed() as NSArray
+        
+        let dictionaryArray = NSArrayToDictionaryArray(nsArray: ordereNnsArray)
         let apodArray = dictionaryArrayToApodArray(dictionaryArray: dictionaryArray)
         
         return apodArray
