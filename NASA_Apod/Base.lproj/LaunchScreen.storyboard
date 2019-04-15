@@ -23,19 +23,27 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nasa_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Itp-wF-nfk">
-                                <rect key="frame" x="0.0" y="144" width="414" height="236"/>
+                                <rect key="frame" x="0.0" y="169" width="414.00000000000091" height="236.00000000000045"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="236" id="RMk-vU-zK7"/>
                                     <constraint firstAttribute="width" constant="414" id="eUq-iP-aRf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Astronomy Picture of the Day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyD-fF-IPC">
-                                <rect key="frame" x="0.0" y="393" width="414" height="110"/>
-                                <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7R-Gi-PmT">
+                                <rect key="frame" x="32" y="415.5" width="350" height="65"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="1MP-0X-6tT"/>
+                                    <constraint firstAttribute="width" constant="350" id="490-8P-v5B"/>
+                                    <constraint firstAttribute="height" constant="65" id="a0R-Qj-p9b"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Astronomy Picture of the Day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyD-fF-IPC">
+                                <rect key="frame" x="43.5" y="432" width="327" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="327" id="OF6-1D-70E"/>
+                                    <constraint firstAttribute="height" constant="32" id="Qzq-pc-RnD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -43,14 +51,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Itp-wF-nfk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1zZ-eA-eh1"/>
-                            <constraint firstItem="RyD-fF-IPC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6ZS-G7-Qqv"/>
                             <constraint firstItem="Itp-wF-nfk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Efu-gL-viC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Itp-wF-nfk" secondAttribute="trailing" id="Heu-oo-aeZ"/>
-                            <constraint firstItem="Itp-wF-nfk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="KlH-Ij-e5F"/>
-                            <constraint firstItem="RyD-fF-IPC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Sxs-sG-2zi"/>
+                            <constraint firstItem="RyD-fF-IPC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KNw-l1-Ayl"/>
+                            <constraint firstItem="Itp-wF-nfk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="KlH-Ij-e5F"/>
+                            <constraint firstItem="O7R-Gi-PmT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="S3R-Yu-24h"/>
+                            <constraint firstItem="RyD-fF-IPC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VKw-bm-iuI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Itp-wF-nfk" secondAttribute="trailing" id="c5t-IU-HAf"/>
-                            <constraint firstItem="RyD-fF-IPC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jx6-cR-hM8"/>
-                            <constraint firstItem="RyD-fF-IPC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lB0-zB-frk"/>
+                            <constraint firstItem="O7R-Gi-PmT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="r2U-ED-pvp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
