@@ -21,6 +21,16 @@ class ApodListController: UIViewController {
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        view.backgroundColor = .black
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barTintColor = .darkText
+        
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

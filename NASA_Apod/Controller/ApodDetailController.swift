@@ -18,10 +18,20 @@ class ApodDetailController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var explanationLabel: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        view.backgroundColor = .black
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         if let data = apod.imageData {
             
             pictureImageView.image = UIImage(data: data)
