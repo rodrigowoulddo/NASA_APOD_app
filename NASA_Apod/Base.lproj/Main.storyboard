@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-fS-d5v">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="apod" rowHeight="125" id="ECH-b1-NLk" customClass="ApodTableViewCell" customModule="NASA_Apod" customModuleProvider="target">
@@ -126,7 +126,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gzU-jn-G4T" secondAttribute="trailing" id="9n8-NC-fU3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gzU-jn-G4T" secondAttribute="bottom" id="K7Y-u6-ZFN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RHN-fS-d5v" secondAttribute="bottom" id="XXx-lF-l6m"/>
+                            <constraint firstAttribute="bottom" secondItem="RHN-fS-d5v" secondAttribute="bottom" id="Zme-Z0-yDO"/>
                             <constraint firstItem="RHN-fS-d5v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a5o-KW-pw6"/>
                             <constraint firstItem="gzU-jn-G4T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uQE-UU-rYW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RHN-fS-d5v" secondAttribute="trailing" id="vER-K9-3z5"/>

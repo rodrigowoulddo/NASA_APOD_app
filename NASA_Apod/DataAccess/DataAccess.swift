@@ -14,7 +14,7 @@ class ApodDataAccess {
         
         print("Geting apods from NASA API")
         
-        let urlTest = URL(string: "https://api.nasa.gov/planetary/apod?api_key=WzRXZduHokkes2pjYAmiuBtrpsdLF8WKOhc1JWYS&start_date="+date)
+        let urlTest = URL(string: "https://api.nasa.gov/planetary/apod?api_key=WzRXZduHokkes2pjYAmiuBtrpsdLF8WKOhc1JWYS&start_date=" + self.getTenDaysBefore(dateString: date) + "&end_date=" + date)
         
         var request = URLRequest(url: urlTest!)
         
@@ -88,6 +88,15 @@ class ApodDataAccess {
         for apod in apods { print("("+apod.date+") "+apod.title) }
         
         return apods
+    }
+    
+    private static func getTenDaysBefore(dateString: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: dateString)
+        let tenDaysFromDate = Calendar.current.date(byAdding: .day, value: -10, to: date ?? Date())
+        
+        return dateFormatter.string(from: tenDaysFromDate ?? Date())
     }
     
 }

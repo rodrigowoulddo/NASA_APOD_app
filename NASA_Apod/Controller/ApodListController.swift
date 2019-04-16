@@ -17,8 +17,6 @@ class ApodListController: UIViewController {
     
     var apods: [Apod] = []
     
-    let DEFAULT_DATE: String = "2019-04-01"
-    
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     override func viewDidLoad() {
@@ -38,11 +36,14 @@ class ApodListController: UIViewController {
         // Set up its size (the super view bounds usually)
         activityIndicator.frame = view.bounds
 
-        loadApods(date: DEFAULT_DATE)
+        loadApods(date: dateToString(date: Date())) // today
         
         datePicker.datePickerMode = .date
         datePickerView.isHidden = true
         datePicker.maximumDate = Date() // today
+        
+        // TODO
+        datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 10, to: stringToDate(dateString : "1995-06-16"))
         
     }
     
@@ -100,12 +101,24 @@ class ApodListController: UIViewController {
     
     private func getDateFromDatePicker() -> String {
         
+        return dateToString(date: self.datePicker.date)
+        
+    }
+    
+    private func isToday(date: String) -> Bool {
+        return dateToString(date: Date()) == date
+    }
+    
+    private func dateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        print(dateFormatter.string(from: self.datePicker.date))
-        
-        return dateFormatter.string(from: self.datePicker.date)
-        
+        return dateFormatter.string(from: date)
+    }
+    
+    private func stringToDate(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: dateString)!
     }
     
     private func clearApods(){
@@ -147,7 +160,7 @@ extension ApodListController: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel.text = "  " + currentAPOD.title
         
         // Set image date
-        cell.dateLabel.text = indexPath.row == 0 ? "Today" : currentAPOD.date
+        cell.dateLabel.text = isToday(date: currentAPOD.date) ? "Today" : currentAPOD.date
         
         // Set image url
         if currentAPOD.imageData == nil {
