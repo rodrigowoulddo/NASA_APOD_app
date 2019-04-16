@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		75DF47C022637E3D00A9125B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47BF22637E3D00A9125B /* AppDelegate.swift */; };
-		75DF47C222637E3D00A9125B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47C122637E3D00A9125B /* ViewController.swift */; };
+		75DF47C222637E3D00A9125B /* ApodListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47C122637E3D00A9125B /* ApodListController.swift */; };
 		75DF47C522637E3D00A9125B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DF47C322637E3D00A9125B /* Main.storyboard */; };
 		75DF47C722637E3E00A9125B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75DF47C622637E3E00A9125B /* Assets.xcassets */; };
 		75DF47CA22637E3E00A9125B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DF47C822637E3E00A9125B /* LaunchScreen.storyboard */; };
 		75DF47D522637E3F00A9125B /* NASA_ApodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47D422637E3F00A9125B /* NASA_ApodTests.swift */; };
 		75DF47E022637E3F00A9125B /* NASA_ApodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47DF22637E3F00A9125B /* NASA_ApodUITests.swift */; };
+		75DF47F222637F4200A9125B /* ApodDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47F122637F4200A9125B /* ApodDetailController.swift */; };
+		75DF47F422637F9600A9125B /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47F322637F9600A9125B /* Apod.swift */; };
+		75DF47F7226386A700A9125B /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47F6226386A700A9125B /* DataAccess.swift */; };
+		75DF47F92263ABFC00A9125B /* TableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47F82263ABFC00A9125B /* TableViewCells.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		75DF47BC22637E3D00A9125B /* NASA_Apod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA_Apod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DF47BF22637E3D00A9125B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		75DF47C122637E3D00A9125B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75DF47C122637E3D00A9125B /* ApodListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodListController.swift; sourceTree = "<group>"; };
 		75DF47C422637E3D00A9125B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75DF47C622637E3E00A9125B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75DF47C922637E3E00A9125B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,10 @@
 		75DF47DB22637E3F00A9125B /* NASA_ApodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NASA_ApodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DF47DF22637E3F00A9125B /* NASA_ApodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASA_ApodUITests.swift; sourceTree = "<group>"; };
 		75DF47E122637E3F00A9125B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75DF47F122637F4200A9125B /* ApodDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailController.swift; sourceTree = "<group>"; };
+		75DF47F322637F9600A9125B /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
+		75DF47F6226386A700A9125B /* DataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
+		75DF47F82263ABFC00A9125B /* TableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +105,14 @@
 		75DF47BE22637E3D00A9125B /* NASA_Apod */ = {
 			isa = PBXGroup;
 			children = (
-				75DF47BF22637E3D00A9125B /* AppDelegate.swift */,
-				75DF47C122637E3D00A9125B /* ViewController.swift */,
+				75DF47F52263867C00A9125B /* DataAccess */,
+				75DF47F022637F0600A9125B /* Controller */,
+				75DF47EF22637EFE00A9125B /* View */,
+				75DF47EE22637EF300A9125B /* Model */,
+				75DF47ED22637EC600A9125B /* Support */,
 				75DF47C322637E3D00A9125B /* Main.storyboard */,
 				75DF47C622637E3E00A9125B /* Assets.xcassets */,
 				75DF47C822637E3E00A9125B /* LaunchScreen.storyboard */,
-				75DF47CB22637E3E00A9125B /* Info.plist */,
 			);
 			path = NASA_Apod;
 			sourceTree = "<group>";
@@ -123,6 +133,48 @@
 				75DF47E122637E3F00A9125B /* Info.plist */,
 			);
 			path = NASA_ApodUITests;
+			sourceTree = "<group>";
+		};
+		75DF47ED22637EC600A9125B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				75DF47BF22637E3D00A9125B /* AppDelegate.swift */,
+				75DF47CB22637E3E00A9125B /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		75DF47EE22637EF300A9125B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75DF47F322637F9600A9125B /* Apod.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		75DF47EF22637EFE00A9125B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75DF47F82263ABFC00A9125B /* TableViewCells.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75DF47F022637F0600A9125B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				75DF47C122637E3D00A9125B /* ApodListController.swift */,
+				75DF47F122637F4200A9125B /* ApodDetailController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		75DF47F52263867C00A9125B /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				75DF47F6226386A700A9125B /* DataAccess.swift */,
+			);
+			path = DataAccess;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +308,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75DF47C222637E3D00A9125B /* ViewController.swift in Sources */,
+				75DF47C222637E3D00A9125B /* ApodListController.swift in Sources */,
+				75DF47F92263ABFC00A9125B /* TableViewCells.swift in Sources */,
+				75DF47F422637F9600A9125B /* Apod.swift in Sources */,
+				75DF47F222637F4200A9125B /* ApodDetailController.swift in Sources */,
 				75DF47C022637E3D00A9125B /* AppDelegate.swift in Sources */,
+				75DF47F7226386A700A9125B /* DataAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,14 +490,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66X93R6BN6;
-				INFOPLIST_FILE = NASA_Apod/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NASA_Apod/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rodrigowoulddo.NASA-Apod";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -452,14 +508,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66X93R6BN6;
-				INFOPLIST_FILE = NASA_Apod/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NASA_Apod/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rodrigowoulddo.NASA-Apod";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
