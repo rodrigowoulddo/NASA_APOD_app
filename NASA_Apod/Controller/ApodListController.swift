@@ -23,7 +23,10 @@ class ApodListController: UIViewController {
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        apodsTableView.delegate = self
         apodsTableView.dataSource = self
         apodsTableView.rowHeight = 125.0
         apodsTableView.separatorStyle = .none
@@ -108,9 +111,22 @@ class ApodListController: UIViewController {
         }
     }
     
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToDetailsSegue",
+        let detailController = segue.destination as? ApodDetailController,
+        let selectedAPOD = sender as? Apod {
+            
+            detailController.apod = selectedAPOD
+            
+        }
+        
+    }
 }
 
-extension ApodListController: UITableViewDataSource{
+extension ApodListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apods.count
@@ -160,7 +176,16 @@ extension ApodListController: UITableViewDataSource{
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        print(#function, self)
+//    }
     
-    
-}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        print("will perform segue")
+        performSegue(withIdentifier: "goToDetailsSegue", sender: apods[indexPath.row])
+
+    }
+}

@@ -24,7 +24,7 @@ class ApodDataAccess {
         let task : URLSessionDataTask = session.dataTask(with: request) { (data, response, error) in
             
             let statusCode = (response as! HTTPURLResponse).statusCode
-            if statusCode == 200{
+            if statusCode == 200 {
                 
                 if let returnData = String(data: data!, encoding: .utf8) {
 
