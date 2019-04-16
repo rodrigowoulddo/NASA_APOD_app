@@ -17,7 +17,7 @@ class ApodListController: UIViewController {
     
     var apods: [Apod] = []
     
-    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -39,20 +39,14 @@ class ApodListController: UIViewController {
         apodsTableView.separatorStyle = .none
         
         // Activity indicator
+        activityIndicator.layer.cornerRadius = 10
         
-        // Add it to the view where you want it to appear
-        view.addSubview(activityIndicator)
-        
-        // Set up its size (the super view bounds usually)
-        activityIndicator.frame = view.bounds
-
         loadApods(date: dateToString(date: Date())) // today
         
         datePicker.datePickerMode = .date
         datePickerView.isHidden = true
         datePicker.maximumDate = Date() // today
         
-        // TODO
         datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 10, to: stringToDate(dateString : "1995-06-16"))
         
     }
@@ -63,7 +57,9 @@ class ApodListController: UIViewController {
         
         DispatchQueue.main.async { self.apodsTableView.reloadData() }
         
-        DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
+        DispatchQueue.main.async { self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }
         
     }
     
@@ -91,7 +87,9 @@ class ApodListController: UIViewController {
     
     private func loadApods(date: String){
         
-        DispatchQueue.main.async { self.activityIndicator.startAnimating() }
+        DispatchQueue.main.async { self.activityIndicator.startAnimating()
+            self.activityIndicator.isHidden = false
+        }
         
         self.clearApods()
         
