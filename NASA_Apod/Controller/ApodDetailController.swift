@@ -25,6 +25,7 @@ class ApodDetailController: UIViewController {
         view.backgroundColor = .black
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
     }
     
