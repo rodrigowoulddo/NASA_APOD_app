@@ -49,7 +49,7 @@ class ApodDetailController: UIViewController {
         titleLabel.text = apod.title
         titleLabel.adjustsFontSizeToFitWidth = true
         
-        explanationLabel.text = apod.explanation
+        explanationLabel.text = "   " + apod.explanation
         explanationLabel.numberOfLines = 0
         explanationLabel.adjustsFontSizeToFitWidth = true
         
