@@ -22,20 +22,16 @@ class ApodDetailController: UIViewController {
         
         super.viewDidLoad()
         
-        if apod.media_type == "image" {
-            if let url = URL(string: apod.url) {
-                DispatchQueue.global().async {
-                    if let data = try? Data(contentsOf:url) {
-                        DispatchQueue.main.async {
-                            self.pictureImageView.image = UIImage(data:data)
-                            self.pictureImageView.layer.borderColor = UIColor.white.cgColor
-                            self.pictureImageView.layer.borderWidth = 5
-                            self.bgPictureImageView.image = UIImage(data:data)
-                        }
-                    }
-                }
-            }
+        if let data = apod.imageData {
+            
+            pictureImageView.image = UIImage(data: data)
+            pictureImageView.layer.borderColor = UIColor.white.cgColor
+            pictureImageView.layer.borderWidth = 5
+            
+            bgPictureImageView.image = UIImage(data: data)
+            
         }
+        
         
         dateLabel.text = apod.date
         

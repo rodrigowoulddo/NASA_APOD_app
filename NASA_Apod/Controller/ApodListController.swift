@@ -11,7 +11,6 @@ import UIKit
 class ApodListController: UIViewController {
     
     @IBOutlet weak var apodsTableView: UITableView!
-
     @IBOutlet weak var dateButton: UIBarButtonItem!
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -31,10 +30,11 @@ class ApodListController: UIViewController {
         apodsTableView.rowHeight = 125.0
         apodsTableView.separatorStyle = .none
         
-        //Activity indicator
+        // Activity indicator
         
         // Add it to the view where you want it to appear
         view.addSubview(activityIndicator)
+        
         // Set up its size (the super view bounds usually)
         activityIndicator.frame = view.bounds
 
@@ -42,36 +42,36 @@ class ApodListController: UIViewController {
         
         datePicker.datePickerMode = .date
         datePickerView.isHidden = true
-        datePicker.maximumDate = Date() //today
+        datePicker.maximumDate = Date() // today
+        
     }
     
     private func onResponseFromAPI(apods: [Apod]){
+        
         self.apods = apods
         
-        DispatchQueue.main.async {
-            self.apodsTableView.reloadData()
-        }
+        DispatchQueue.main.async { self.apodsTableView.reloadData() }
         
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-        }
-        
+        DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
         
     }
     
     @IBAction func dateButtonClick(_ sender: Any) {
         
         if datePickerView.isHidden{
+            
             toggleDatePicker()
             dateButton.image = UIImage(named: "ok_icon")
+            
             return
+            
         }
         
         print("Change Date")
         
         let date : String = getDateFromDatePicker()
         
-       loadApods(date: date)
+        loadApods(date: date)
         
         dateButton.image = UIImage(named: "date_icon")
         toggleDatePicker()
@@ -80,37 +80,40 @@ class ApodListController: UIViewController {
     
     private func loadApods(date: String){
         
-        DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-        }
+        DispatchQueue.main.async { self.activityIndicator.startAnimating() }
         
         self.clearApods()
+        
         ApodDataAccess.getAPods(date: date, onResponse: {
+            
             (apods) in self.onResponseFromAPI(apods: apods)
+            
         })
         
     }
     
     private func toggleDatePicker(){
+        
         datePickerView.isHidden = !datePickerView.isHidden
+        
     }
     
     private func getDateFromDatePicker() -> String {
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         print(dateFormatter.string(from: self.datePicker.date))
+        
         return dateFormatter.string(from: self.datePicker.date)
         
     }
     
     private func clearApods(){
+        
         self.apods = []
         
-        DispatchQueue.main.async {
-            self.apodsTableView.reloadData()
-        }
-    }
-    
+        DispatchQueue.main.async { self.apodsTableView.reloadData() }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,62 +132,70 @@ class ApodListController: UIViewController {
 extension ApodListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return apods.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "apod") as! ApodTableViewCell
         
-        // Set image title
-        cell.titleLabel.text = "  " + apods[indexPath.row].title
+        let currentAPOD = apods[indexPath.row]
         
-        //Set image date
-        if indexPath .row == 0 {
-            cell.dateLabel.text = "Today"
-            
-        }else{
-            cell.dateLabel.text = apods[indexPath.row].date
-        }
-
+        // Set image title
+        cell.titleLabel.text = "  " + currentAPOD.title
+        
+        // Set image date
+        cell.dateLabel.text = indexPath.row == 0 ? "Today" : currentAPOD.date
         
         // Set image url
-        
-        if apods[indexPath.row].imageData == nil {
-            if apods[indexPath.row].media_type == "image"{
-                if let url = URL( string: apods[indexPath.row].url)
-                {
-                    cell.dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, _) in
-                        if let data = data {
-                            self.apods[indexPath.row].imageData = data
+        if currentAPOD.imageData == nil {
+            
+            if currentAPOD.media_type == "image" {
+                
+                if let url = URL(string: currentAPOD.url) {
+                    
+                    cell.dataTask = URLSession.shared.dataTask(with: url, completionHandler: {
+                        
+                        (data, _, _) in
+                        
+                        if let imageData = data {
+                            
+                            self.apods[indexPath.row].imageData = imageData
+                            
                             DispatchQueue.main.async {
-                                cell.pictureImageView.image = UIImage(data: data)
+                                
+                                cell.pictureImageView.image = UIImage(data: imageData)
+                                
                             }
+                            
                         }
+                        
                     })
                     
                     cell.dataTask?.resume()
+                    
                 }
-            }
-        } else{
+                
+            } else { /* media_type == "video" */ }
+            
+        } else {
+            
             DispatchQueue.main.async {
-                cell.pictureImageView.image = UIImage(data: self.apods[indexPath.row].imageData!)
+                
+                cell.pictureImageView.image = UIImage(data: currentAPOD.imageData!)
+                
             }
+            
         }
 
-
-        
         return cell
+        
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        print(#function, self)
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        print("will perform segue")
         performSegue(withIdentifier: "goToDetailsSegue", sender: apods[indexPath.row])
 
     }
