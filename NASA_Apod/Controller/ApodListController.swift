@@ -28,7 +28,7 @@ class ApodListController: UIViewController {
         view.backgroundColor = .black
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .darkText
-        
+        navigationController?.navigationBar.barStyle = .black
     }
     
     override func viewDidLoad() {
