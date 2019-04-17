@@ -14,6 +14,8 @@ public class ApodTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var notAvaliableLabel: UILabel!
     
     var dataTask: URLSessionDataTask?
     
@@ -25,6 +27,7 @@ public class ApodTableViewCell: UITableViewCell {
     public override func prepareForReuse() {
         dataTask?.cancel()
         pictureImageView.image = UIImage(named: "no_image")
+        activityIndicator.isHidden = false
     }
     
 }

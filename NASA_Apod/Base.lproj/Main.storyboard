@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Astronomy Pictures of The Day-->
+        <!--Pictures of The Day-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ApodListController" customModule="NASA_Apod" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,6 +34,9 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image" translatesAutoresizingMaskIntoConstraints="NO" id="was-FH-OUa">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="125.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="414" id="taQ-yd-pp9"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NT-qm-an2">
                                                             <rect key="frame" x="0.0" y="80.5" width="414" height="45"/>
@@ -56,17 +59,37 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JeZ-iE-466">
+                                                            <rect key="frame" x="197" y="53" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="Zmn-jc-3Vb"/>
+                                                                <constraint firstAttribute="width" constant="20" id="pAn-uZ-zv6"/>
+                                                            </constraints>
+                                                        </activityIndicatorView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not avaliable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wM0-46-maO">
+                                                            <rect key="frame" x="159" y="52.5" width="96" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="23e-v6-7wM"/>
+                                                                <constraint firstAttribute="width" constant="96" id="Vx8-3i-I04"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="9NT-qm-an2" firstAttribute="leading" secondItem="QkA-4u-hfU" secondAttribute="leading" id="2fB-kB-vAh"/>
+                                                        <constraint firstItem="JeZ-iE-466" firstAttribute="centerX" secondItem="QkA-4u-hfU" secondAttribute="centerX" id="90r-zZ-pjq"/>
                                                         <constraint firstItem="48k-d4-FGP" firstAttribute="leading" secondItem="QkA-4u-hfU" secondAttribute="leading" constant="8" id="CrJ-gE-DFt"/>
                                                         <constraint firstItem="48k-d4-FGP" firstAttribute="top" secondItem="QkA-4u-hfU" secondAttribute="top" constant="8" id="Kph-Sc-SbQ"/>
-                                                        <constraint firstAttribute="width" constant="414" id="Lao-vX-eaU"/>
+                                                        <constraint firstItem="wM0-46-maO" firstAttribute="centerY" secondItem="QkA-4u-hfU" secondAttribute="centerY" id="OAH-0X-OTW"/>
                                                         <constraint firstAttribute="bottom" secondItem="was-FH-OUa" secondAttribute="bottom" id="T9Z-Pw-2Ra"/>
                                                         <constraint firstAttribute="height" constant="125" id="VZ8-XJ-IYl"/>
                                                         <constraint firstItem="was-FH-OUa" firstAttribute="top" secondItem="QkA-4u-hfU" secondAttribute="top" id="W0z-JM-GL8"/>
                                                         <constraint firstItem="was-FH-OUa" firstAttribute="leading" secondItem="QkA-4u-hfU" secondAttribute="leading" id="iHl-uE-hMh"/>
+                                                        <constraint firstItem="JeZ-iE-466" firstAttribute="centerY" secondItem="QkA-4u-hfU" secondAttribute="centerY" id="jfK-6V-r3p"/>
+                                                        <constraint firstItem="wM0-46-maO" firstAttribute="centerX" secondItem="QkA-4u-hfU" secondAttribute="centerX" id="lHj-Iw-f1F"/>
                                                         <constraint firstAttribute="trailing" secondItem="9NT-qm-an2" secondAttribute="trailing" id="lqb-8D-k4K"/>
                                                         <constraint firstAttribute="trailing" secondItem="was-FH-OUa" secondAttribute="trailing" id="mn6-qb-8k3"/>
                                                         <constraint firstAttribute="bottom" secondItem="9NT-qm-an2" secondAttribute="bottom" id="q1V-OX-NR7"/>
@@ -74,16 +97,16 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="QkA-4u-hfU" secondAttribute="trailing" id="9Eo-0D-ed1"/>
                                                 <constraint firstItem="QkA-4u-hfU" firstAttribute="leading" secondItem="wEx-jj-Ix0" secondAttribute="leading" id="Eoe-0l-bdK"/>
-                                                <constraint firstItem="QkA-4u-hfU" firstAttribute="leading" secondItem="wEx-jj-Ix0" secondAttribute="leading" id="LMi-kF-OJ5"/>
                                                 <constraint firstAttribute="trailing" secondItem="QkA-4u-hfU" secondAttribute="trailing" id="Scx-Yx-Zir"/>
                                                 <constraint firstAttribute="bottom" secondItem="QkA-4u-hfU" secondAttribute="bottom" id="hKm-H1-OOa"/>
                                                 <constraint firstItem="QkA-4u-hfU" firstAttribute="top" secondItem="wEx-jj-Ix0" secondAttribute="top" id="umf-2j-vLk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="JeZ-iE-466" id="acx-qQ-XNb"/>
                                             <outlet property="dateLabel" destination="48k-d4-FGP" id="A4m-cp-xEG"/>
+                                            <outlet property="notAvaliableLabel" destination="wM0-46-maO" id="Ptr-3Q-Fwd"/>
                                             <outlet property="pictureImageView" destination="was-FH-OUa" id="EnV-Fv-DOq"/>
                                             <outlet property="titleLabel" destination="9NT-qm-an2" id="7wt-w1-Vey"/>
                                         </connections>
@@ -91,7 +114,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzU-jn-G4T">
-                                <rect key="frame" x="0.0" y="622" width="414" height="240"/>
+                                <rect key="frame" x="0.0" y="656" width="414" height="240"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Lgj-aO-0cd">
                                         <rect key="frame" x="0.0" y="25" width="414" height="215"/>
@@ -102,7 +125,7 @@
                                             <!--2019-04-15 20:04:42 +0000-->
                                         </date>
                                     </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get APOD's since" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpY-uA-CHi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get APOD's from this day and 10 days earlier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpY-uA-CHi">
                                         <rect key="frame" x="16" y="10" width="382" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,17 +157,17 @@
                         <constraints>
                             <constraint firstItem="D0j-hW-vWJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0og-6V-BRD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gzU-jn-G4T" secondAttribute="trailing" id="9n8-NC-fU3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gzU-jn-G4T" secondAttribute="bottom" id="K7Y-u6-ZFN"/>
                             <constraint firstItem="D0j-hW-vWJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UKv-lP-N43"/>
                             <constraint firstAttribute="bottom" secondItem="RHN-fS-d5v" secondAttribute="bottom" id="Zme-Z0-yDO"/>
                             <constraint firstItem="RHN-fS-d5v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a5o-KW-pw6"/>
+                            <constraint firstAttribute="bottom" secondItem="gzU-jn-G4T" secondAttribute="bottom" id="ePw-HI-Xej"/>
                             <constraint firstItem="gzU-jn-G4T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uQE-UU-rYW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RHN-fS-d5v" secondAttribute="trailing" id="vER-K9-3z5"/>
                             <constraint firstItem="RHN-fS-d5v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vgb-xC-enP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Astronomy Pictures of The Day" id="Ko4-dl-YKh">
+                    <navigationItem key="navigationItem" title="Pictures of The Day" id="Ko4-dl-YKh">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="date_icon" id="Sha-5B-IiT">
                             <connections>
                                 <action selector="dateButtonClick:" destination="BYZ-38-t0r" id="1ij-2O-MDB"/>
@@ -264,6 +287,6 @@
     </scenes>
     <resources>
         <image name="date_icon" width="32" height="32"/>
-        <image name="no_image" width="128" height="128"/>
+        <image name="no_image" width="655" height="245.5"/>
     </resources>
 </document>

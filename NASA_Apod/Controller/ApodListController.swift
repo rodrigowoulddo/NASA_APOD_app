@@ -147,6 +147,11 @@ class ApodListController: UIViewController {
             
         }
         
+        // change back buton text because its too long
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
+        
     }
 }
 
@@ -171,6 +176,9 @@ extension ApodListController: UITableViewDataSource, UITableViewDelegate {
         cell.dateLabel.text = isToday(date: currentAPOD.date) ? "Today" : currentAPOD.date
         
         // Set image url
+        cell.notAvaliableLabel.isHidden = true
+        cell.activityIndicator.startAnimating() // placeholder
+
         if currentAPOD.imageData == nil {
             
             if currentAPOD.media_type == "image" {
@@ -188,7 +196,7 @@ extension ApodListController: UITableViewDataSource, UITableViewDelegate {
                             DispatchQueue.main.async {
                                 
                                 cell.pictureImageView.image = UIImage(data: imageData)
-                                
+                                cell.activityIndicator.isHidden = true
                             }
                             
                         }
@@ -199,13 +207,52 @@ extension ApodListController: UITableViewDataSource, UITableViewDelegate {
                     
                 }
                 
-            } else { /* media_type == "video" */ }
+            } else {
+                /* media_type == "video" */
+                
+                if currentAPOD.url.contains("youtube"){
+                    
+                    let thumbnailURL = "https://img.youtube.com/vi/" + (currentAPOD.url.youtubeID ?? "k_2yFEzwNG4") + "/mqdefault.jpg" // the default is a mock video
+                    
+                    if let url = URL(string: thumbnailURL) {
+                        
+                        cell.dataTask = URLSession.shared.dataTask(with: url, completionHandler: {
+                            
+                            (data, _, _) in
+                            
+                            if let imageData = data {
+                                
+                                self.apods[indexPath.row].imageData = imageData
+                                
+                                DispatchQueue.main.async {
+                                    
+
+                                    cell.pictureImageView.image = UIImage(data: imageData)
+                                    cell.activityIndicator.isHidden = true
+                                }
+                                
+                            }
+                            
+                        })
+                        
+                        cell.dataTask?.resume()
+                        
+                    }
+
+                } else {
+                    cell.notAvaliableLabel.isHidden = false
+                    cell.activityIndicator.isHidden = true
+                    
+                }
+
+            }
             
         } else {
             
             DispatchQueue.main.async {
                 
                 cell.pictureImageView.image = UIImage(data: currentAPOD.imageData!)
+                cell.activityIndicator.isHidden = true
                 
             }
             
@@ -219,5 +266,23 @@ extension ApodListController: UITableViewDataSource, UITableViewDelegate {
         
         performSegue(withIdentifier: "goToDetailsSegue", sender: apods[indexPath.row])
 
+    }
+    
+    
+}
+
+// to get id from youtube videos
+extension String {
+    var youtubeID: String? {
+        let pattern = "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/))([\\w-]++)"
+        
+        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+        let range = NSRange(location: 0, length: count)
+        
+        guard let result = regex?.firstMatch(in: self, range: range) else {
+            return nil
+        }
+        
+        return (self as NSString).substring(with: result.range)
     }
 }
