@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7576042F22A057F70070F267 /* ApodImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7576042E22A057F70070F267 /* ApodImageController.swift */; };
 		75DF47C022637E3D00A9125B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47BF22637E3D00A9125B /* AppDelegate.swift */; };
 		75DF47C222637E3D00A9125B /* ApodListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF47C122637E3D00A9125B /* ApodListController.swift */; };
 		75DF47C522637E3D00A9125B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DF47C322637E3D00A9125B /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7576042E22A057F70070F267 /* ApodImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodImageController.swift; sourceTree = "<group>"; };
 		75DF47BC22637E3D00A9125B /* NASA_Apod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA_Apod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DF47BF22637E3D00A9125B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75DF47C122637E3D00A9125B /* ApodListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodListController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				75DF47C122637E3D00A9125B /* ApodListController.swift */,
+				7576042E22A057F70070F267 /* ApodImageController.swift */,
 				75DF47F122637F4200A9125B /* ApodDetailController.swift */,
 			);
 			path = Controller;
@@ -310,6 +313,7 @@
 			files = (
 				75DF47C222637E3D00A9125B /* ApodListController.swift in Sources */,
 				75DF47F92263ABFC00A9125B /* TableViewCells.swift in Sources */,
+				7576042F22A057F70070F267 /* ApodImageController.swift in Sources */,
 				75DF47F422637F9600A9125B /* Apod.swift in Sources */,
 				75DF47F222637F4200A9125B /* ApodDetailController.swift in Sources */,
 				75DF47C022637E3D00A9125B /* AppDelegate.swift in Sources */,
